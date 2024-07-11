@@ -19,6 +19,21 @@
 *.tar.gz
 *.rar
 
+# But re-include this specific jar file necessary for Gradle
+!gradle/wrapper/gradle-wrapper.jar
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-replay_pid*
+
+.DS_Store
+.idea/
+bin/
+build/
+target/
+.gradle/
+logs/
+nohup.out
+
+
+
+

@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: fslabs-workportal
+    datasource:
+        username: jobportal
+        password: jobportal
+        url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/jobportal
+        driver-class-name: com.mysql.cj.jdbc.Driver
+

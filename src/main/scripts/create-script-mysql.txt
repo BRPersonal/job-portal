@@ -48,14 +48,13 @@ CREATE TABLE job_location (
 CREATE TABLE job_seeker_profile (
   user_account_id int NOT NULL,
   city varchar(255) DEFAULT NULL,
+  state varchar(255) DEFAULT NULL,
   country varchar(255) DEFAULT NULL,
   employment_type varchar(255) DEFAULT NULL,
   first_name varchar(255) DEFAULT NULL,
   last_name varchar(255) DEFAULT NULL,
   profile_photo varchar(255) DEFAULT NULL,
   resume varchar(255) DEFAULT NULL,
-  state varchar(255) DEFAULT NULL,
-  work_authorization varchar(255) DEFAULT NULL,
   PRIMARY KEY (user_account_id),
   CONSTRAINT job_seeker_profile_user_account_id_fk FOREIGN KEY (user_account_id) REFERENCES users (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -64,12 +63,12 @@ CREATE TABLE job_seeker_profile (
 CREATE TABLE recruiter_profile (
   user_account_id int NOT NULL,
   city varchar(255) DEFAULT NULL,
-  company varchar(255) DEFAULT NULL,
+  state varchar(255) DEFAULT NULL,
   country varchar(255) DEFAULT NULL,
+  company varchar(255) DEFAULT NULL,
   first_name varchar(255) DEFAULT NULL,
   last_name varchar(255) DEFAULT NULL,
   profile_photo varchar(64) DEFAULT NULL,
-  state varchar(255) DEFAULT NULL,
   PRIMARY KEY (user_account_id),
   CONSTRAINT recruiter_profile_user_account_id_fk FOREIGN KEY (user_account_id) REFERENCES users (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -111,7 +110,7 @@ CREATE TABLE skills (
   experience_level varchar(255) DEFAULT NULL,
   name varchar(255) DEFAULT NULL,
   years_of_experience varchar(255) DEFAULT NULL,
-  job_seeker_profile int DEFAULT NULL,
+  job_seeker_profile_id int DEFAULT NULL,
   PRIMARY KEY (id),
-  CONSTRAINT skills_job_seeker_profile_fk FOREIGN KEY (job_seeker_profile) REFERENCES job_seeker_profile (user_account_id)
+  CONSTRAINT skills_job_seeker_profile_id_fk FOREIGN KEY (job_seeker_profile_id) REFERENCES job_seeker_profile (user_account_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

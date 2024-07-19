@@ -29,7 +29,6 @@ public class UsersController
     private final UsersTypeService usersTypeService;
     private final UsersService usersService;
 
-    @Autowired
     public UsersController(UsersTypeService usersTypeService, UsersService usersService)
     {
         this.usersTypeService = usersTypeService;
@@ -51,7 +50,7 @@ public class UsersController
         Optional<Users> optionalUsers = usersService.getUserByEmail(users.getEmail());
         if (optionalUsers.isPresent())
         {
-            model.addAttribute("error", "Email already registered.Try to login or register with other email.");
+            model.addAttribute("error", "Email already registered.Try to login or register with different Email.");
             List<UsersType> usersTypes = usersTypeService.getAll();
             model.addAttribute("userTypes", usersTypes);
             model.addAttribute("user", new Users());

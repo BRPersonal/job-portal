@@ -55,7 +55,8 @@ public class UsersService
         return savedUser;
     }
 
-    public Object getCurrentUserProfile() {
+    public Object getCurrentUserProfile()
+    {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -74,6 +75,20 @@ public class UsersService
                 JobSeekerProfile jobSeekerProfile = jobSeekerProfileRepository.findById(userId).orElse(new JobSeekerProfile());
                 return jobSeekerProfile;
             }
+        }
+
+        return null;
+    }
+
+    public Users getCurrentUser()
+    {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken))
+        {
+            String username = authentication.getName();
+            Users user = usersRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Could not found " + "user"));
+            return user;
         }
 
         return null;

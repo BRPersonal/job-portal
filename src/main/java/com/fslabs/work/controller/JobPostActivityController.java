@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
 @Controller
-public class DashBoardController
+public class JobPostActivityController
 {
     private final UsersService usersService;
 
-    public DashBoardController(UsersService usersService)
+    public JobPostActivityController(UsersService usersService)
     {
         this.usersService = usersService;
     }

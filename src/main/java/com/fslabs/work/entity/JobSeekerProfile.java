@@ -28,7 +28,6 @@ public class JobSeekerProfile
     private String city;
     private String state;
     private String country;
-    private String workAuthorization;
     private String employmentType;
     private String resume;
 

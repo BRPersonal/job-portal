@@ -28,7 +28,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
         if (hasRecruiterRole || hasJobSeekerRole) //It has to be either of these two. This if check is waste
         {
-            response.sendRedirect("/dashboard");
+            response.sendRedirect("/dashboard/");
         }
     }
 }

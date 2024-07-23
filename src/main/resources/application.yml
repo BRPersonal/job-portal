@@ -6,4 +6,10 @@ spring:
         password: jobportal
         url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/jobportal
         driver-class-name: com.mysql.cj.jdbc.Driver
+    servlet:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 10MB
+            enabled: true
+
 

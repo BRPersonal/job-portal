@@ -33,7 +33,7 @@ public class JobPostActivityController
         this.jobPostActivityService = jobPostActivityService;
     }
 
-    @GetMapping("/dashboard/")
+    @GetMapping("/dashboard")
     public String searchJobs(Model model)
     {
         log.debug("Rendering dashboard form...");
@@ -75,7 +75,7 @@ public class JobPostActivityController
         jobPostActivity.setPostedDate(new Date());
         model.addAttribute("jobPostActivity", jobPostActivity);
         JobPostActivity saved = jobPostActivityService.addNew(jobPostActivity);
-        return "redirect:/dashboard/";
+        return "redirect:/dashboard";
     }
 
     @PostMapping("dashboard/edit/{id}")

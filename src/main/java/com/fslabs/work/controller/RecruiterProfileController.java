@@ -34,7 +34,7 @@ public class RecruiterProfileController
         this.recruiterProfileService = recruiterProfileService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String recruiterProfile(Model model)
     {
 
@@ -87,6 +87,6 @@ public class RecruiterProfileController
             ex.printStackTrace();
         }
 
-        return "redirect:/dashboard/";
+        return "redirect:/dashboard";
     }
 }

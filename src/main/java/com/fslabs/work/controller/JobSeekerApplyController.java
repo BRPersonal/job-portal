@@ -16,14 +16,13 @@ public class JobSeekerApplyController
     private final JobPostActivityService jobPostActivityService;
     private final UsersService usersService;
 
-    @Autowired
     public JobSeekerApplyController(JobPostActivityService jobPostActivityService, UsersService usersService)
     {
         this.jobPostActivityService = jobPostActivityService;
         this.usersService = usersService;
     }
 
-    @GetMapping("job-details-apply/{id}")
+    @GetMapping("/job-details-apply/{id}")
     public String display(@PathVariable("id") int id, Model model)
     {
         JobPostActivity jobDetails = jobPostActivityService.getOne(id);

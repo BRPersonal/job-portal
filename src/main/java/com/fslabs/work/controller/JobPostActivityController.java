@@ -78,7 +78,7 @@ public class JobPostActivityController
         return "redirect:/dashboard";
     }
 
-    @PostMapping("dashboard/edit/{id}")
+    @PostMapping("/dashboard/edit/{id}")
     public String editJob(@PathVariable("id") int id, Model model)
     {
 

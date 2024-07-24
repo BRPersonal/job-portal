@@ -58,7 +58,10 @@ public class JobPostActivityController
     }
 
     @GetMapping("/dashboard/add")
-    public String showAddJobForm(Model model) {
+    public String showAddJobForm(Model model)
+    {
+        log.debug("Rendering AddJob Form");
+
         model.addAttribute("jobPostActivity", new JobPostActivity());
         model.addAttribute("user", usersService.getCurrentUserProfile());
         return "add-jobs";

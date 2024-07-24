@@ -105,10 +105,18 @@
 <script type="text/javascript" th:src="@{/js/main.js}"></script>
 
 <script>
+    // Check if jQuery is loaded
+    if (typeof jQuery !== 'undefined') {
+        console.log('jQuery is loaded');
+    } else {
+        console.log('jQuery is not loaded');
+    }
+
     $(document).ready(function() {
-        $('#content').summernote({
-            height: 100
-        });
+     console.log('jQuery is working and the document is ready');
+     $('#content').summernote({
+         height: 100
+     });
     });
 </script>
 

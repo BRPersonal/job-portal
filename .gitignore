@@ -33,6 +33,7 @@ target/
 .gradle/
 logs/
 photos/
+resumes/
 nohup.out
 
 

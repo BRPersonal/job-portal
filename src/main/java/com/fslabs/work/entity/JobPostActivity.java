@@ -10,10 +10,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
+@Table(name = "job_post_activity")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class JobPostActivity {
+public class JobPostActivity
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -33,30 +33,6 @@ public class JobPostActivityController
         this.jobPostActivityService = jobPostActivityService;
     }
 
-    @GetMapping("/dashboard")
-    public String searchJobs(Model model)
-    {
-        log.debug("Rendering dashboard form...");
-
-        Object currentUserProfile = usersService.getCurrentUserProfile();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(authentication instanceof AnonymousAuthenticationToken))
-        {
-            String currentUsername = authentication.getName();
-            model.addAttribute("username", currentUsername);
-            if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("Recruiter")))
-            {
-                List<RecruiterJobsDto> recruiterJobs = jobPostActivityService.getRecruiterJobs(((RecruiterProfile) currentUserProfile).getUserAccountId());
-                model.addAttribute("jobPost", recruiterJobs);
-            }
-
-        }
-        model.addAttribute("user", currentUserProfile);
-
-        return "dashboard";
-    }
-
     @GetMapping("/dashboard/add")
     public String showAddJobForm(Model model)
     {

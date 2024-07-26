@@ -9,12 +9,15 @@ import com.fslabs.work.repository.JobPostActivityRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
-public class JobPostActivityService {
+public class JobPostActivityService
+{
 
     private final JobPostActivityRepository jobPostActivityRepository;
 
@@ -23,7 +26,8 @@ public class JobPostActivityService {
         this.jobPostActivityRepository = jobPostActivityRepository;
     }
 
-    public JobPostActivity addNew(JobPostActivity jobPostActivity) {
+    public JobPostActivity addNew(JobPostActivity jobPostActivity)
+    {
         return jobPostActivityRepository.save(jobPostActivity);
     }
 
@@ -49,5 +53,16 @@ public class JobPostActivityService {
     {
         return jobPostActivityRepository.findById(id).orElseThrow(
                 ()->new RuntimeException("Job not found"));
+    }
+
+    public List<JobPostActivity> getAll()
+    {
+        return jobPostActivityRepository.findAll();
+    }
+
+    public List<JobPostActivity> search(String job, String location, List<String> type, List<String> remote, LocalDate searchDate)
+    {
+        return Objects.isNull(searchDate) ? jobPostActivityRepository.searchWithoutDate(job, location, remote,type) :
+                jobPostActivityRepository.search(job, location, remote, type, searchDate);
     }
 }

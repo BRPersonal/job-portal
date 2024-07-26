@@ -5,7 +5,7 @@ import com.fslabs.work.entity.Skills;
 import com.fslabs.work.entity.Users;
 import com.fslabs.work.repository.UsersRepository;
 import com.fslabs.work.service.JobSeekerProfileService;
-import com.fslabs.work.util.FileUploadUtil;
+import com.fslabs.work.util.ResourceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -118,11 +118,11 @@ public class JobSeekerProfileController
             String resumeUploadDir = "resumes/candidate/" + jobSeekerProfile.getUserAccountId();
             if (!Objects.equals(image.getOriginalFilename(), ""))
             {
-                FileUploadUtil.saveFile(photoUploadDir, imageName, image);
+                ResourceUtil.saveFile(photoUploadDir, imageName, image);
             }
             if (!Objects.equals(pdf.getOriginalFilename(), ""))
             {
-                FileUploadUtil.saveFile(resumeUploadDir, resumeName, pdf);
+                ResourceUtil.saveFile(resumeUploadDir, resumeName, pdf);
             }
         }
         catch (IOException ex)

@@ -17,7 +17,7 @@ import org.springframework.core.io.UrlResource;
 
 
 @Slf4j
-public class FileUploadUtil
+public class ResourceUtil
 {
 
     public static void saveFile(String uploadDir, String filename, MultipartFile multipartFile) throws IOException

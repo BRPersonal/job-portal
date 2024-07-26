@@ -4,7 +4,7 @@ import com.fslabs.work.entity.RecruiterProfile;
 import com.fslabs.work.entity.Users;
 import com.fslabs.work.repository.UsersRepository;
 import com.fslabs.work.service.RecruiterProfileService;
-import com.fslabs.work.util.FileUploadUtil;
+import com.fslabs.work.util.ResourceUtil;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -80,7 +80,7 @@ public class RecruiterProfileController
         String uploadDir = "photos/recruiter/" + savedUser.getUserAccountId();
         try
         {
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+            ResourceUtil.saveFile(uploadDir, fileName, multipartFile);
         }
         catch (Exception ex)
         {

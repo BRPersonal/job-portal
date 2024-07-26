@@ -1,6 +1,7 @@
 package com.fslabs.work.util;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -22,6 +23,12 @@ public class ResourceUtil
 
     public static void saveFile(String uploadDir, String filename, MultipartFile multipartFile) throws IOException
     {
+
+        if (!StringUtils.hasText(filename))
+        {
+            log.debug("Nothing to save. returning");
+            return;
+        }
 
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath))

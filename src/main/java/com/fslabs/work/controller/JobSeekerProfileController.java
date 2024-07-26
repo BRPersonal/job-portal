@@ -7,6 +7,11 @@ import com.fslabs.work.repository.UsersRepository;
 import com.fslabs.work.service.JobSeekerProfileService;
 import com.fslabs.work.util.ResourceUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -131,6 +136,39 @@ public class JobSeekerProfileController
         }
 
         return "redirect:/dashboard";
+    }
+
+    @GetMapping("/{id}")
+    public String candidateProfile(@PathVariable("id") int id, Model model)
+    {
+        Optional<JobSeekerProfile> seekerProfile = jobSeekerProfileService.getOne(id);
+        model.addAttribute("profile", seekerProfile.get());
+        return "job-seeker-profile";
+    }
+
+    @GetMapping("/downloadResume")
+    public ResponseEntity<?> downloadResume(@RequestParam(value = "fileName") String fileName, @RequestParam(value = "userID") String userId)
+    {
+
+        Resource resource = null;
+
+        try
+        {
+            resource = ResourceUtil.getFileAsResource("resumes/candidate/" + userId, fileName);
+        }
+        catch (IOException e)
+        {
+            return ResponseEntity.badRequest().build();
+        }
+
+        String contentType = "application/octet-stream";
+        String headerValue = "attachment; filename=\"" + resource.getFilename() + "\"";
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, headerValue)
+                .body(resource);
+
     }
 }
 

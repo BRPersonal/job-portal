@@ -45,6 +45,10 @@ public class JobSearchService
         return bookeMarkedRepository.findByJob(job);
     }
 
+    public void addNew(AppliedJobs jobSeekerApply)
+    {
+        appliedRepository.save(jobSeekerApply);
+    }
 
 
 }

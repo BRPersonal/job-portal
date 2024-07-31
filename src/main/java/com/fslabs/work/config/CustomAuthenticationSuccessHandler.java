@@ -21,10 +21,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String username = userDetails.getUsername();
 
-        boolean hasJobSeekerRole = authentication.getAuthorities().stream().anyMatch(r->r.getAuthority().equals("Job Seeker"));
-        boolean hasRecruiterRole = authentication.getAuthorities().stream().anyMatch(r->r.getAuthority().equals("Recruiter"));
+        boolean hasJobSeekerRole = authentication.getAuthorities().stream().anyMatch(r->r.getAuthority().equals("JOB_SEEKER"));
+        boolean hasRecruiterRole = authentication.getAuthorities().stream().anyMatch(r->r.getAuthority().equals("RECRUITER"));
         log.debug("The username {} is logged in.Role={}",username,
-                hasJobSeekerRole ? "Job Seeker" : hasRecruiterRole ? "Recruiter" : "Undefined");
+                hasJobSeekerRole ? "JOB_SEEKER" : hasRecruiterRole ? "RECRUITER" : "Undefined");
 
         if (hasRecruiterRole || hasJobSeekerRole) //It has to be either of these two. This if check is waste
         {

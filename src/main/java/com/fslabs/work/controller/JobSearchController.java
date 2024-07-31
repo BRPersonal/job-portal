@@ -125,7 +125,7 @@ public class JobSearchController
         {
             String currentUsername = authentication.getName();
             model.addAttribute("username", currentUsername);
-            if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("Recruiter")))
+            if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("RECRUITER")))
             {
                 List<RecruiterJobsDto> recruiterJobs = jobPostActivityService.getRecruiterJobs(((RecruiterProfile) currentUserProfile).getUserAccountId());
                 model.addAttribute("jobPost", recruiterJobs);

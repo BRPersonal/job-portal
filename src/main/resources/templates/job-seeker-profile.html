@@ -192,7 +192,7 @@
                             </div>
                         </div>
 
-                        <div class="row gutters" sec:authorize="hasAuthority('Job Seeker')">
+                        <div class="row gutters" sec:authorize="hasAuthority('JOB_SEEKER')">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-left mt-2">
                                     <button
@@ -207,7 +207,7 @@
                         </div>
 
                         <div class="row mt-2">
-                            <div class="col-md-5 me-5" sec:authorize="hasAuthority('Job Seeker')">
+                            <div class="col-md-5 me-5" sec:authorize="hasAuthority('JOB_SEEKER')">
                                 <label class="heading_font font_sub_heading_color">
                                     Profile Photo</label
                                 >
@@ -226,7 +226,7 @@
                                     Resume</label
                                 >
                                 <input
-                                        sec:authorize="hasAuthority('Job Seeker')"
+                                        sec:authorize="hasAuthority('JOB_SEEKER')"
                                         type="file"
                                         name="pdf"
                                         class="form-control"
@@ -234,14 +234,14 @@
                                         accept="application/pdf"
                                 />
                                 <input type="text" name="resume" th:field="*{resume}" class="form-control" hidden/>
-                                <a sec:authorize="hasAuthority('Recruiter')"
+                                <a sec:authorize="hasAuthority('RECRUITER')"
                                    th:href="@{|/job-seeker-profile/downloadResume?fileName=${profile.resume}&&userID=${profile.userAccountId}|}">Download
                                     Resume</a>
                             </div>
                         </div>
 
                         <div class="row mt-3 col d-flex justify-content-center"
-                             sec:authorize="hasAuthority('Job Seeker')">
+                             sec:authorize="hasAuthority('JOB_SEEKER')">
                             <div class="text-right">
                                 <button
                                         type="submit"
@@ -259,7 +259,7 @@
         </div>
     </div>
 </div>
-<div sec:authorize="hasAuthority('Recruiter')">
+<div sec:authorize="hasAuthority('RECRUITER')">
 
 </div>
 </body>
@@ -276,7 +276,7 @@
         th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"
 ></script>
 <script type="text/javascript" th:src="@{/js/main.js}"></script>
-<script sec:authorize="hasAuthority('Recruiter')">
+<script sec:authorize="hasAuthority('RECRUITER')">
     console.log("Disable inputs");
   $("input").prop( "disabled", true );
    $("select").prop( "disabled", true );

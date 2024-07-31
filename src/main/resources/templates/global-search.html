@@ -220,11 +220,11 @@
                             <div class="col-md-4">
                                 <label class="job-title text-left">
                                     [[${jobPost.jobTitle}]]
-                                    <span class="title-span" sec:authorize="hasAuthority('Recruiter')"
+                                    <span class="title-span" sec:authorize="hasAuthority('RECRUITER')"
                                           th:text="'('+ @{${jobPost.totalCandidates}}+' Candidates Applied)'">(xx candidates applied)</span>
-                                    <span class="title-span" sec:authorize="hasAuthority('Job Seeker')"
+                                    <span class="title-span" sec:authorize="hasAuthority('JOB_SEEKER')"
                                           th:if="${jobPost.isActive == true}">(Applied)</span>
-                                    <span class="title-span" sec:authorize="hasAuthority('Job Seeker')"
+                                    <span class="title-span" sec:authorize="hasAuthority('JOB_SEEKER')"
                                           th:if="${jobPost.isSaved == true}">(Saved)</span>
 
                                 </label>

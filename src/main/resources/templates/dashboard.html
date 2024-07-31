@@ -41,31 +41,31 @@
         <ul class="navbar-nav m-auto mt-2 mt-lg-0">
 
             <li class="nav-item active">
-                <a sec:authorize="hasAuthority('Job Seeker')" class="nav-link" th:href="@{/dashboard}"
+                <a sec:authorize="hasAuthority('JOB_SEEKER')" class="nav-link" th:href="@{/dashboard}"
                 ><i class="fas fa-search"></i>Search for Jobs</a
                 >
             </li>
             <li class="nav-item ">
-                <a sec:authorize="hasAuthority('Job Seeker')" class="nav-link" th:href="@{/saved-jobs}">
+                <a sec:authorize="hasAuthority('JOB_SEEKER')" class="nav-link" th:href="@{/saved-jobs}">
                     <i class="fa-solid fa-eye"></i>View Saved Jobs</a>
             </li>
             <li class="nav-item ">
-                <a sec:authorize="hasAuthority('Job Seeker')" class="nav-link" th:href="@{/job-seeker-profile}">
+                <a sec:authorize="hasAuthority('JOB_SEEKER')" class="nav-link" th:href="@{/job-seeker-profile}">
                     <i class="fa-solid fa-pencil"></i>Edit Profile</a>
             </li>
 
             <li class="nav-item ">
-                <a sec:authorize="hasAuthority('Recruiter')" class="nav-link" th:href="@{/dashboard/add}"
+                <a sec:authorize="hasAuthority('RECRUITER')" class="nav-link" th:href="@{/dashboard/add}"
                 ><i class="fa-solid fa-file-circle-plus"></i>Post New Job</a
                 >
             </li>
             <li class="nav-item active">
-                <a sec:authorize="hasAuthority('Recruiter')" class="nav-link" th:href="@{/dashboard}"
+                <a sec:authorize="hasAuthority('RECRUITER')" class="nav-link" th:href="@{/dashboard}"
                 > <i class="fa-solid fa-eye"></i>View Your Jobs</a
                 >
             </li>
             <li class="nav-item ">
-                <a sec:authorize="hasAuthority('Recruiter')" class="nav-link" th:href="@{/recruiter-profile}"
+                <a sec:authorize="hasAuthority('RECRUITER')" class="nav-link" th:href="@{/recruiter-profile}"
                 > <i class="fa-solid fa-pencil"></i>Edit Account</a
                 >
             </li>
@@ -94,7 +94,7 @@
 
 <section class="section">
     <div class="sidenav px-5">
-        <div sec:authorize="hasAuthority('Job Seeker')">
+        <div sec:authorize="hasAuthority('JOB_SEEKER')">
 
             <label class="text-uppercase color-dull font-weight-bold">Filter Results</label>
             <hr/>
@@ -232,7 +232,7 @@
         </div>
     </div>
     <article>
-        <div class="box" sec:authorize="hasAuthority('Job Seeker')">
+        <div class="box" sec:authorize="hasAuthority('JOB_SEEKER')">
             <h1 class="primary-title">Candidate Dashboard</h1>
             <div class="inner">
                 <input id="job" class="radius-left" type="text" placeholder="Search for a job" name="job"
@@ -241,11 +241,11 @@
                 <button class="radius-right" type="submit" form="myForm"><i class="fa fa-search"></i></button>
             </div>
         </div>
-        <div class="box" sec:authorize="hasAuthority('Recruiter')">
+        <div class="box" sec:authorize="hasAuthority('RECRUITER')">
             <h1 class="primary-title">Recruiter Dashboard</h1>
         </div>
         <div class="box mt-3">
-            <label class="large-label px-3 mb-3" sec:authorize="hasAuthority('Job Seeker')">Search Results</label>
+            <label class="large-label px-3 mb-3" sec:authorize="hasAuthority('JOB_SEEKER')">Search Results</label>
             <th:block th:each="jobPost:${jobPost}">
                 <a
                         th:href="@{/job-details-apply/{id}(id=${jobPost.jobPostId})}"
@@ -261,19 +261,19 @@
                                     [[${jobPost.jobTitle}]]
                                     <span
                                             class="title-span"
-                                            sec:authorize="hasAuthority('Recruiter')"
+                                            sec:authorize="hasAuthority('RECRUITER')"
                                             th:text="'('+ @{${jobPost.totalCandidates}}+' Candidates Applied)'"
                                     >(xx candidates applied)</span
                                     >
                                     <span
                                             class="title-span"
-                                            sec:authorize="hasAuthority('Job Seeker')"
+                                            sec:authorize="hasAuthority('JOB_SEEKER')"
                                             th:if="${jobPost.isActive == true}"
                                     >(Applied)</span
                                     >
                                     <span
                                             class="title-span"
-                                            sec:authorize="hasAuthority('Job Seeker')"
+                                            sec:authorize="hasAuthority('JOB_SEEKER')"
                                             th:if="${jobPost.isSaved == true}"
                                     >(Saved)</span
                                     >

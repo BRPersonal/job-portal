@@ -46,7 +46,7 @@ public class JobSeekerApplyController
 
         if (!(authentication instanceof AnonymousAuthenticationToken))
         {
-            if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("Recruiter")))
+            if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("RECRUITER")))
             {
                 //Recruiter
                 RecruiterProfile user = recruiterProfileService.getCurrentRecruiterProfile();

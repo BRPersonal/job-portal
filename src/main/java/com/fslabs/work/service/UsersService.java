@@ -4,6 +4,7 @@ import com.fslabs.work.entity.JobSeekerProfile;
 import com.fslabs.work.entity.RecruiterProfile;
 import com.fslabs.work.repository.JobSeekerProfileRepository;
 import com.fslabs.work.repository.RecruiterProfileRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class UsersService
 {
@@ -44,14 +46,22 @@ public class UsersService
         users.setRegistrationDate(new Date(System.currentTimeMillis()));
         users.setPassword(passwordEncoder.encode(users.getPassword()));
         Users savedUser = usersRepository.save(users);
-        int userTypeId = users.getUserTypeId().getUserTypeId();
+        String userRole = savedUser.getUserTypeId().getUserTypeName();
+        log.debug("Saving new user with role={}", userRole);
 
-        if (userTypeId == 1) {
+        if (userRole.equals("RECRUITER"))
+        {
             recruiterProfileRepository.save(new RecruiterProfile(savedUser));
         }
-        else {
+        else if (userRole.equals("JOB_SEEKER"))
+        {
             jobSeekerProfileRepository.save(new JobSeekerProfile(savedUser));
         }
+        else
+        {
+            throw new RuntimeException(String.format("Unknown Role:%s",userRole));
+        }
+
         return savedUser;
     }
 

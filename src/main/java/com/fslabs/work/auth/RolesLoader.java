@@ -19,17 +19,14 @@ public class RolesLoader implements CommandLineRunner
     private final JdbcTemplate jdbcTemplate;
     private final RestTemplate restTemplate;
 
-    @Value("${application.security-portal.user}")
-    private String securityPortalUserName;
-
-    @Value("${application.security-portal.password}")
-    private String securityPortalPassword;
-
-
     @Override
     public void run(String... args) throws Exception
     {
         log.debug("Downloading Roles...");
+
+        //We should sign-in to security portal and get
+        //roles mapped to the workportal user and use them to update
+        //the database. For now we are hard-coding it here
         List<String> roles = List.of("RECRUITER","JOB_SEEKER");
         insertRoles(roles);
     }

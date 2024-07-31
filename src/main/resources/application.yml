@@ -11,8 +11,3 @@ spring:
             max-file-size: 10MB
             max-request-size: 10MB
             enabled: true
-application:
-    security-portal:
-        user: workportal@fleetstudio.com
-        password: workportal@108
-

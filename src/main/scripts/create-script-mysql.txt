@@ -9,7 +9,8 @@ USE jobportal;
 CREATE TABLE users_type (
   user_type_id int NOT NULL AUTO_INCREMENT,
   user_type_name varchar(255) DEFAULT NULL,
-  PRIMARY KEY (user_type_id)
+  PRIMARY KEY (user_type_id),
+  CONSTRAINT users_type_user_type_name_uk UNIQUE KEY(user_type_name)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO users_type VALUES (1,'Recruiter'),(2,'Job Seeker');

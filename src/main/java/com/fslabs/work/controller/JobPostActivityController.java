@@ -1,23 +1,16 @@
 package com.fslabs.work.controller;
 
 import com.fslabs.work.entity.JobPostActivity;
-import com.fslabs.work.entity.RecruiterProfile;
 import com.fslabs.work.entity.Users;
-import com.fslabs.work.model.RecruiterJobsDto;
 import com.fslabs.work.service.JobPostActivityService;
 import com.fslabs.work.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Date;
-import java.util.List;
 
 @Slf4j
 @Controller
